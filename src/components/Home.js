@@ -6,7 +6,7 @@ import Movies from './Movies';
 import db from '../firebase';
 import {useDispatch} from 'react-redux';
 import {setMovies} from '../features/movie/movieSlice';
-
+/* eslint-disable */
 const Home = () => {
 
     const dispatch = useDispatch();
@@ -19,7 +19,7 @@ const Home = () => {
             dispatch(setMovies(tempMovies));
         })
     }, []);
-
+/* eslint-enable */
     return ( 
         <Container>
             <ImgSlider />

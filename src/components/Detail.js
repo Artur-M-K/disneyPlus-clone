@@ -1,37 +1,64 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
+import {useParams} from 'react-router-dom';
+import db from '../firebase';
 
 const Detail = () => {
+
+    const {id} = useParams();
+
+    const [movie, setMovie] = useState();
+
+    useEffect(() => {
+        //grab movie from database
+        db.collection("movies")
+        .doc(id)
+        .get()
+        .then((doc) => {
+            if (doc.exists){
+                //save movie
+                setMovie(doc.data());
+            }else{
+                //if not back to home page
+            }
+        })
+    }, [id]);
+
     return ( 
         <Container>
-            <Background>
-                <img src="https://cdn.vox-cdn.com/thumbor/dBfMltea80VN7-_-x1My2r-lzUY=/0x0:4096x2304/1220x813/filters:focal(1973x1175:2627x1829):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/60190709/BO_RGB_s120_22a_cs_pub.pub16.318.0.jpg" alt="" />
-            </Background>
-            <ImageTitle>
-                <img src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/D7AEE1F05D10FC37C873176AAA26F777FC1B71E7A6563F36C6B1B497CAB1CEC2/scale?width=1344&aspectRatio=1.78" alt="" />
-            </ImageTitle>
-            <Controls>
-                <PlayButton>
-                    <img src="/images/play-icon-black.png" alt="" />
-                    <span>PLAY</span>
-                </PlayButton>
-                <TrailerButton>
-                <img src="/images/play-icon-white.png" alt="" />
-                    <span>TRAILER</span>
-                </TrailerButton>
-                <AddButton>
-                    <span>+</span>
-                </AddButton>
-                <GroupWatchButton>
-                    <img src="/images/group-icon.png" alt="" />
-                </GroupWatchButton>
-            </Controls>
-            <SubTitle>
-                2018 | 7m | Family, Fantasy, Kids, Animation
-            </SubTitle>
-            <Description>
-            A Chinese mom who's sad when her grown son leaves home gets another chance at motherhood when one of her dumplings springs to life as a lively, giggly dumpling boy.
-            </Description>
+            {movie && 
+            <>
+                <Background>
+                    <img src={movie.backgroundImg} alt="" />
+                </Background>
+                <ImageTitle>
+                    <img src={movie.titleImg} alt="" />
+                </ImageTitle>
+                <Controls>
+                    <PlayButton>
+                        <img src="/images/play-icon-black.png" alt="" />
+                        <span>PLAY</span>
+                    </PlayButton>
+                    <TrailerButton>
+                        <img src="/images/play-icon-white.png" alt="" />
+                        <span>TRAILER</span>
+                    </TrailerButton>
+                    <AddButton>
+                        <span>+</span>
+                    </AddButton>
+                    <GroupWatchButton>
+                        <img src="/images/group-icon.png" alt="" />
+                    </GroupWatchButton>
+                </Controls>
+                <SubTitle>
+                    {movie.subTitle}
+                </SubTitle>
+                <Description>
+                    {movie.description}
+                </Description>
+            </>
+        }
+            
         </Container>
      );
 }
@@ -65,6 +92,7 @@ const ImageTitle = styled.div`
     width: 35vw;
     min-width: 200px;
     margin-top: 60px;
+    margin-bottom: 30px;
 
     img {
         width: 100%;

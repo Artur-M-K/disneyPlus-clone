@@ -1,35 +1,25 @@
 import React from 'react';
 import styled from 'styled-components';
+import {selectMovies} from '../features/movie/movieSlice';
+import {useSelector} from 'react-redux';
 
 const Movies = () => {
+
+    const movies = useSelector(selectMovies);
+
+    console.log(movies);
+
     return ( 
         <Container>
             <h4>Recommended for You</h4>
             <Content>
-                <Wrap>
-                    <img src="https://whatsondisneyplus.com/wp-content/uploads/2019/10/EG1tpkVVUAEU30q.jpg" alt="" />
-                </Wrap>
-                <Wrap>
-                    <img src="https://whatsondisneyplus.com/wp-content/uploads/2019/10/EG1tpkVVUAEU30q.jpg" alt="" />
-                </Wrap>
-                <Wrap>
-                    <img src="https://whatsondisneyplus.com/wp-content/uploads/2019/10/EG1tpkVVUAEU30q.jpg" alt="" />
-                </Wrap>
-                <Wrap>
-                    <img src="https://whatsondisneyplus.com/wp-content/uploads/2019/10/EG1tpkVVUAEU30q.jpg" alt="" />
-                </Wrap>
-                <Wrap>
-                    <img src="https://whatsondisneyplus.com/wp-content/uploads/2019/10/EG1tpkVVUAEU30q.jpg" alt="" />
-                </Wrap>
-                <Wrap>
-                    <img src="https://whatsondisneyplus.com/wp-content/uploads/2019/10/EG1tpkVVUAEU30q.jpg" alt="" />
-                </Wrap>
-                <Wrap>
-                    <img src="https://whatsondisneyplus.com/wp-content/uploads/2019/10/EG1tpkVVUAEU30q.jpg" alt="" />
-                </Wrap>
-                <Wrap>
-                    <img src="https://whatsondisneyplus.com/wp-content/uploads/2019/10/EG1tpkVVUAEU30q.jpg" alt="" />
-                </Wrap>
+                {movies && 
+                    movies.map((movie) => (
+                        <Wrap key={movie.id}>
+                            <img src={movie.cardImg} alt="" />
+                        </Wrap>  
+                    ))
+                }
             </Content>
         </Container>
      );
@@ -44,6 +34,7 @@ const Content = styled.div`
     display: grid;
     grid-gap: 25px;
     grid-template-columns: repeat(4, minmax(0, 1fr));
+    overflow: hidden;
 `
 const Wrap = styled.div`
 

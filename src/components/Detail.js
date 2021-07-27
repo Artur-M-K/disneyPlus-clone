@@ -137,11 +137,12 @@ const AddButton = styled.button`
     justify-content: center;
     border-radius: 50%;
     border: 2px solid white;
+    padding-bottom: 5px;
     background-color: rgba(0, 0, 0, 0.6);
     cursor: pointer;
 
     span {
-        font-size: 30px;
+        font-size: 32px;
         color: white;
     }
 `

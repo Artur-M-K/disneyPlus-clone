@@ -84,7 +84,7 @@ const Header = () => {
                     <span>SERIES</span>
                 </a>
             </NavMenu>
-            <UserImg onClick={signOut} src="https://avatars.githubusercontent.com/u/80982136?v=4"/>
+            <UserImg onClick={signOut} src={userPhoto}/>
         
                 </>
             }

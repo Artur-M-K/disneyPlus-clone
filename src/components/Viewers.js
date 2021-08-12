@@ -1,29 +1,29 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 const Viewers = () => {
-    const [play, setPlay] = useState(false);
+
     return ( 
         <Container>
-            <Wrap onMouseEnter={() => setPlay(true)} onMouseLeave={() => setPlay(false)}>
+            <Wrap>
                 <img src="/images/viewers-disney.png" alt="" />
-                <video src="/videos/disney.mp4" autoPlay={play} loop></video>
+                <video src="/videos/disney.mp4"  autoPlay='true' loop muted playsinline></video>
             </Wrap>
-            <Wrap onMouseEnter={() => setPlay(true)} onMouseLeave={() => setPlay(false)}>
+            <Wrap>
                 <img src="/images/viewers-marvel.png" alt="" />
-                <video src="/videos/marvel.mp4" autoPlay={play} loop></video>
+                <video src="/videos/marvel.mp4"  autoPlay='true' loop muted></video>
             </Wrap>
-            <Wrap onMouseEnter={() => setPlay(true)} onMouseLeave={() => setPlay(false)}>
+            <Wrap>
                 <img src="/images/viewers-national.png" alt="" />
-                <video src="/videos/national-geographic.mp4" autoPlay={play} loop></video>
+                <video src="/videos/national-geographic.mp4"  autoPlay='true' loop muted></video>
             </Wrap>
-            <Wrap onMouseEnter={() => setPlay(true)} onMouseLeave={() => setPlay(false)}>
+            <Wrap>
                 <img src="/images/viewers-pixar.png" alt="" />
-                <video src="/videos/pixar.mp4" autoPlay={play} loop></video>
+                <video src="/videos/pixar.mp4"  autoPlay='true' loop muted></video>
             </Wrap>
-            <Wrap onMouseEnter={() => setPlay(true)} onMouseLeave={() => setPlay(false)}>
+            <Wrap>
                 <img src="/images/viewers-starwars.png" alt="" />
-                <video src="/videos/star-wars.mp4" autoPlay={play} loop></video>
+                <video src="/videos/star-wars.mp4"  autoPlay='true' loop muted></video>
             </Wrap>
         </Container>
      );

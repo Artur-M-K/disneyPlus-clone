@@ -10,7 +10,7 @@ import {useSelector} from 'react-redux';
 
 function App() {
   const userName = useSelector(selectUserName);
-  console.log(userName)
+  
   return (
     <div className="App">
       <Router>
